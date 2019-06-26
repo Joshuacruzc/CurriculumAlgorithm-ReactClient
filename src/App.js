@@ -45,7 +45,7 @@ class App extends React.Component{
         data.append('course_id', result['draggableId']);
         data.append('source_semester', result["source"]["droppableId"]);
         data.append('new_semester', result["destination"]["droppableId"]);
-        fetch(`http://127.0.0.1:8000/ca/remove_course/` ,
+        fetch(`http://127.0.0.1:8000/ca/transfer_course/` ,
             {method: 'post', body: data})
             .then(res => res.json())
             .then((data) => {
