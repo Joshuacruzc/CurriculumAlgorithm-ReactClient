@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {DragDropContext} from "react-beautiful-dnd";
 import Semester from "./Semester";
-
+import './semester.css'
 
 const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
@@ -85,16 +85,17 @@ class App extends React.Component{
     render() {
         if (Object.keys(this.state.semesters).length > 0){
             return (
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    {Object.keys(this.state.semesters).map((semester_id, index) => (
-                        <Semester semester={this.state.semesters[semester_id]}/>
-                    ))}
-                </DragDropContext>
-
+                <div className="planContainer">
+                    <DragDropContext onDragEnd={this.onDragEnd}>
+                        {Object.keys(this.state.semesters).map((semester_id, index) => (
+                            <Semester semester={this.state.semesters[semester_id]}/>
+                        ))}
+                    </DragDropContext>
+                </div>
 
             );
         } else{
-            return (<h1>did not work</h1>);
+            return (<h1>Cannot connect to server.</h1>);
         }
     }
 }
