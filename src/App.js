@@ -2,7 +2,14 @@ import React from 'react';
 import './App.css';
 import {DragDropContext} from "react-beautiful-dnd";
 import Semester from "./Semester";
-import './semester.css'
+
+
+const getContextStyle = () => ({
+    display: 'flex',
+    flexWrap:'wrap',
+    overflow: 'auto',
+    justifyContent: 'center',
+});
 
 const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
@@ -87,9 +94,11 @@ class App extends React.Component{
             return (
                 <div className="planContainer">
                     <DragDropContext onDragEnd={this.onDragEnd}>
-                        {Object.keys(this.state.semesters).map((semester_id, index) => (
-                            <Semester semester={this.state.semesters[semester_id]}/>
-                        ))}
+                        <div style={getContextStyle()}>
+                            {Object.keys(this.state.semesters).map((semester_id, index) => (
+                                    <Semester semester={this.state.semesters[semester_id]}/>
+                            ))}
+                        </div>
                     </DragDropContext>
                 </div>
 
