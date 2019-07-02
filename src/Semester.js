@@ -1,29 +1,58 @@
 import React from 'react';
-import styled from 'styled-components'
-import Course from './Course'
-import {Droppable} from "react-beautiful-dnd";
+import {Draggable, Droppable} from "react-beautiful-dnd";
 
-const Container = styled.div`
-    margin: 8px;
-    border: 1px solid black;
-    border-radius: 2px;
-`;
-const Title = styled.h3`
-    padding: 8px`;
-const CourseList = styled.div`
-    padding: 8px`;
+const grid = 8;
+const getItemStyle = (isDragging, draggableStyle) => ({
+    // some basic styles to make the items look a bit nicer
+    userSelect: 'none',
+    padding: grid * 2,
+    margin: `0 ${grid}px 0 0`,
+
+    // change background colour if dragging
+    background: isDragging ? 'lightgreen' : 'grey',
+
+    // styles we need to apply on draggables
+    ...draggableStyle,
+});
+const getListStyle = isDraggingOver => ({
+    background: isDraggingOver ? 'lightblue' : 'lightgrey',
+    display: 'flex',
+    padding: grid,
+    overflow: 'auto',
+});
+
 export default class Semester extends React.Component {
+    semester;
     render() {
         return (
-            <Container>
-                <Title> {this.props.semester.position}</Title>
-                <Droppable droppableId={this.props.semester.id}>
-                    {(provided) => (
-                        <CourseList innerRef={provided.innerRef}>{this.props.courses.map(course => <Course key={course.id}
-                                                                              course={course}/>)}</CourseList>
-                    )}
-                </Droppable>
-            </Container>
+            <Droppable droppableId={"" + this.props.semester.id} direction="horizontal">
+                {(provided, snapshot) => (
+                    <div
+                        ref={provided.innerRef}
+                        style={getListStyle(snapshot.isDraggingOver)}
+                        {...provided.droppableProps}
+                    >
+                        {this.props.semester.curriculum_courses.map((course, index) => (
+                            <Draggable key={course.id} draggableId={course.id} index={index}>
+                                {(provided, snapshot) => (
+                                    <div
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                        style={getItemStyle(
+                                            snapshot.isDragging,
+                                            provided.draggableProps.style
+                                        )}
+                                    >
+                                        {course.course.course_number}
+                                    </div>
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
 
             )
     }
