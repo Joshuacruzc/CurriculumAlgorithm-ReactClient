@@ -1,19 +1,9 @@
 import React from 'react';
 import {Draggable, Droppable} from "react-beautiful-dnd";
+import Course from "./Course";
 
 const grid = 8;
-const getItemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: 'none',
-    padding: grid * 2,
-    margin: `0 ${grid}px 0 0`,
 
-    // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
-
-    // styles we need to apply on draggables
-    ...draggableStyle,
-});
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     display: 'flex',
@@ -33,22 +23,8 @@ export default class Semester extends React.Component {
                         {...provided.droppableProps}
                     >
                         {this.props.semester.curriculum_courses.map((course, index) => (
-                            <Draggable key={course.id} draggableId={course.id} index={index}>
-                                {(provided, snapshot) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        style={getItemStyle(
-                                            snapshot.isDragging,
-                                            provided.draggableProps.style
-                                        )}
-                                    >
-                                        {course.course.course_number}
-                                    </div>
-                                )}
-                            </Draggable>
-                        ))}
+                                <Course course={course} index={index}/>
+                            ))}
                         {provided.placeholder}
                     </div>
                 )}

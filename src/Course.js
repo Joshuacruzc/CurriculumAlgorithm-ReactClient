@@ -1,15 +1,44 @@
 import React from 'react'
-import styled from 'styled-components'
 import {Draggable} from "react-beautiful-dnd";
-const Container = styled.div`
-    border: 1px solid lightgrey;
-    padding: 8px;
-    margin-bottom: 8px;
- `;
+
+
+const grid = 8;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+    // some basic styles to make the items look a bit nicer
+    userSelect: 'none',
+    padding: grid * 2,
+    margin: `0 ${grid}px 0 0`,
+
+    // change background colour if dragging
+    background: isDragging ? 'lightgreen' : 'grey',
+
+    // styles we need to apply on draggables
+    ...draggableStyle,
+});
+
+
 export default class Course extends React.Component{
+    course;
+    index;
     render(){
-        return <h1>Hello World</h1>
+        return (
+            <Draggable key={this.props.course.id} draggableId={this.props.course.id} index={this.props.index}>
+                {(provided, snapshot) => (
+                    <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                        )}
+                    >
+                        {this.props.course.course.course_number}
+                    </div>
+                )}
+            </Draggable>
+        )
     }
-    //     return<Draggable key= {course.id} draggableId={item.id} index={index}><Container>{this.props.course}</Container></Draggable>
-    // }
+
 }
