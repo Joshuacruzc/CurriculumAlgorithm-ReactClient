@@ -4,16 +4,19 @@ import Course from "./Course";
 
 const grid = 8;
 const getContainerStyle = () => ({
-    width: '40%',
+    width: '30%',
     margin: 30,
-
 });
 const getListStyle = isDraggingOver => ({
     background: isDraggingOver ? 'lightblue' : 'lightgrey',
     display: 'flex',
     padding: grid,
     flexWrap:'wrap',
-    overflow: 'auto',
+    flexDirection: 'column',
+    width: '100%',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    borderRadius: 15,
 });
 
 export default class Semester extends React.Component {
@@ -23,7 +26,7 @@ export default class Semester extends React.Component {
             return (
                 <div style={getContainerStyle()} className="semesterContainer">
                     <p>Semester: {this.props.semester.position}</p>
-                    <Droppable droppableId={"" + this.props.semester.id} direction="horizontal">
+                    <Droppable droppableId={"" + this.props.semester.id} direction="vertical">
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}

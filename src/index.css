@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.planContainer{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.semesterArea {
+  flex-grow: 1;
+  width: 60%;
+}
+
+.menuArea {
+  background-color: #282c34;
+  width: 40%;
+}

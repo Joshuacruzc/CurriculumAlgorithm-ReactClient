@@ -7,16 +7,24 @@ const grid = 8;
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
-    padding: grid * 2,
     margin: `${grid}px`,
     borderRadius: 17,
-    // change background colour if dragging
-    background: isDragging ? 'lightgreen' : 'grey',
-
-    // styles we need to apply on draggables
+    width: '90%',
+    height: 50,
+    border: 'solid grey 1px',
+    background: isDragging ? 'lightgreen' : 'white',
     ...draggableStyle,
+    boxShadow: '2px 3px 2px #9E9E9E'
 });
 
+const getLabelStyle = (isDragging) =>({
+    color: 'black',
+    borderRight: 'solid black 2px',
+    paddingRight: '10px',
+    width: '80%',
+    margin: '5%',
+    height: '65%',
+});
 
 export default class Course extends React.Component{
     course;
@@ -34,7 +42,11 @@ export default class Course extends React.Component{
                             provided.draggableProps.style
                         )}
                     >
-                        {this.props.course.course.course_number}
+                        <div style={{display: 'flex'}}>
+                            <h3 style={getLabelStyle(snapshot.isDragging)}>{this.props.course.course.course_number}</h3>
+                            <h3 style={{ margin: '5%',
+                            }}>{this.props.course.course.credit_hours}</h3>
+                        </div>
                     </div>
                 )}
             </Draggable>

@@ -9,6 +9,8 @@ const getContextStyle = () => ({
     flexWrap:'wrap',
     overflow: 'auto',
     justifyContent: 'center',
+    alignContent: 'space-around',
+    width: '50%'
 });
 
 const move = (source, destination, droppableSource, droppableDestination) => {
@@ -92,12 +94,15 @@ class App extends React.Component{
     render() {
         if (Object.keys(this.state.semesters).length > 0){
             return (
-                <div className="planContainer">
-                    <DragDropContext onDragEnd={this.onDragEnd}>
+                <div className="planContainer" >
+                    <DragDropContext className="semesterArea" onDragEnd={this.onDragEnd}>
                         <div style={getContextStyle()}>
                             {Object.keys(this.state.semesters).map((semester_id, index) => (
                                     <Semester semester={this.state.semesters[semester_id]}/>
                             ))}
+                        </div>
+                        <div className="menuArea">
+                            <h1 style={{color: 'white', textAlign: 'center'}}>Semester Keeper</h1>
                         </div>
                     </DragDropContext>
                 </div>
