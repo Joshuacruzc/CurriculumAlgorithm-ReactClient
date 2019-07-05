@@ -2,14 +2,12 @@ import React from 'react'
 import {Draggable} from "react-beautiful-dnd";
 
 
-const grid = 8;
-
 const getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: 'none',
-    margin: `${grid}px`,
+    margin: '2%',
     borderRadius: 17,
-    width: '90%',
+    width:  isDragging ? '50': '90%',
     height: 50,
     border: 'solid grey 1px',
     background: isDragging ? 'lightgreen' : 'white',
@@ -22,7 +20,7 @@ const getLabelStyle = (isDragging) =>({
     borderRight: 'solid black 2px',
     paddingRight: '10px',
     width: '80%',
-    margin: '5%',
+    margin: 'auto',
     height: '65%',
 });
 
@@ -42,9 +40,9 @@ export default class Course extends React.Component{
                             provided.draggableProps.style
                         )}
                     >
-                        <div style={{display: 'flex'}}>
+                        <div style={{display: 'flex', height:'100%'}}>
                             <h3 style={getLabelStyle(snapshot.isDragging)}>{this.props.course.course.course_number}</h3>
-                            <h3 style={{ margin: '5%',
+                            <h3 style={{ margin: 'auto',
                             }}>{this.props.course.course.credit_hours}</h3>
                         </div>
                     </div>

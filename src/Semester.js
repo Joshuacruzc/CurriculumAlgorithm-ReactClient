@@ -7,34 +7,36 @@ const getContainerStyle = () => ({
     width: '30%',
     margin: 30,
 });
-const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? 'lightblue' : 'lightgrey',
-    display: 'flex',
-    padding: grid,
-    flexWrap:'wrap',
-    flexDirection: 'column',
-    width: '100%',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    borderRadius: 15,
-});
 
 export default class Semester extends React.Component {
     semester;
+    getListStyle = isDraggingOver => ({
+        background: isDraggingOver ? 'lightblue' : 'lightgrey',
+        order: this.props.semester.position,
+        display: 'flex',
+        padding: grid,
+        flexWrap:'wrap',
+        flexDirection: 'column',
+        width: '100%',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        borderRadius: 15,
+    });
+
     render() {
         if(this.props.semester) {
             return (
                 <div style={getContainerStyle()} className="semesterContainer">
-                    <p>Semester: {this.props.semester.position}</p>
+                    <h2>Semester: {this.props.semester.position}</h2>
                     <Droppable droppableId={"" + this.props.semester.id} direction="vertical">
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}
+                                style={this.getListStyle(snapshot.isDraggingOver)}
                                 {...provided.droppableProps}
                             >
                                 {this.props.semester.curriculum_courses.map((course, index) => (
-                                    <Course course={course} index={index}/>
+                                    <Course course={course} key={index} index={index}/>
                                 ))}
                                 {provided.placeholder}
                             </div>

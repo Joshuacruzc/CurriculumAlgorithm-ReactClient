@@ -11,10 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.planContainer{
-  margin: auto;
-  display: flex;
+.navBar {
+  height: 5%;
+  background-color: #282c34;
+  display: inline-flex;
+  width: 100%;
   justify-content: space-between;
+}
+.navBar h1{
+  margin-top: 0;
+  color: white;
 }
 
 .semesterArea {
