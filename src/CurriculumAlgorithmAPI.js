@@ -40,3 +40,13 @@ export const convertToken = token => {
         })
         .catch(console.log)
 };
+
+export const transferCourse = (data, token) => {
+    const headers = new Headers();
+    return token.then(token=> {
+        headers.set('Authorization', 'Bearer ' + token['access_token']);
+        fetch(`http://127.0.0.1:8000/ca/transfer_course/`,
+            {method: 'post', body: data, headers: headers})
+            .catch(console.log);
+    });
+};

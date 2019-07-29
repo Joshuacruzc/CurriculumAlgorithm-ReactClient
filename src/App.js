@@ -12,6 +12,7 @@ class App extends React.Component{
         };
         this.getUser = this.getUser.bind(this);
     }
+
     getUser(token){
         const user = {accessToken: token};
         this.setState({user:user})

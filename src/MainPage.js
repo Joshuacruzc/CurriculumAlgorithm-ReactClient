@@ -2,7 +2,7 @@ import React from "react";
 import {DragDropContext} from "react-beautiful-dnd";
 import MenuArea from "./MenuArea";
 import ContentArea from "./ContentArea";
-import {viewStudentPlan} from "./CurriculumAlgorithmAPI";
+import {transferCourse, viewStudentPlan} from "./CurriculumAlgorithmAPI";
 
 const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
@@ -82,9 +82,7 @@ class MainPage extends React.Component{
             if(destination.droppableId !== 'menuArea') {
                 data.append('new_semester', destination["droppableId"]);
             }
-            fetch(`http://127.0.0.1:8000/ca/transfer_course/`, this.props.user.accessToken,
-                {method: 'post', body: data})
-                .catch(console.log);
+            transferCourse(data, this.props.user.accessToken);
             // TODO: Use api response to assert that values in transfer are correct
             const courseTransfer = move(
                 this.getCourseList(source.droppableId),

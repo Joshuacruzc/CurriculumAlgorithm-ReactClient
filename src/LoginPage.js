@@ -3,12 +3,13 @@ import GoogleLogin from "react-google-login";
 import {convertToken} from "./CurriculumAlgorithmAPI";
 
 const responseGoogle = (response) => {
-    console.log(response);
+    console.log('google login failed');
 };
 
 class LoginPage extends React.Component{
     onSuccessfulLogin;
     successfulLogin = (response) =>{
+        console.log('Successful Google Login');
         let token = convertToken(response['accessToken']);
         this.props.onSuccessfulLogin(token);
         return null;
