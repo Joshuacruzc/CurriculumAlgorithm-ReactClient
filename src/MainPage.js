@@ -3,6 +3,7 @@ import {DragDropContext} from "react-beautiful-dnd";
 import MenuArea from "./MenuArea";
 import ContentArea from "./ContentArea";
 import {transferCourse, viewStudentPlan} from "./CurriculumAlgorithmAPI";
+import NavigationBar from "./NavigationBar";
 
 const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
@@ -134,14 +135,7 @@ class MainPage extends React.Component{
     render() {
         return (
             <div>
-                <div className="navBar">
-                    <h1>Semester Keeper</h1>
-                    <button style={{height:'100%', marginTop: 'auto', marginBottom: 'auto', backgroundColor: 'transparent', border: 'none'}} onClick={this.toggleShowMenu}>
-                        <svg height="" id="Layer_1" style={{enableBackground: 'new 0 0 32 32'}} fill="white"  viewBox="0 0 32 32" width="32px" >
-                            <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
-                        </svg>
-                    </button>
-                </div>
+                <NavigationBar user={this.props.user} onClick={this.toggleShowMenu}/>
                 <div className="planContainer" style={this.getPlanStyle()}>
                     <DragDropContext className="semesterArea" onDragEnd={this.onDragEnd}>
                         <ContentArea student_plan_id={1} semesters={this.state.semesters} onbuildPlan={this.componentDidMount}/>

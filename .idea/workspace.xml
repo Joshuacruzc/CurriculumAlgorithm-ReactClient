@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55dcb01f-ba7e-4521-a423-e28dc449ee27" name="Default Changelist" comment="added Working Menu Area with remaining courses in curriculum">
-      <change afterPath="$PROJECT_DIR$/public/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ContentArea.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CurriculumAlgorithmAPI.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LoginPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/curriculum_algorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CurriculumAlgorithm-ReactClient.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="55dcb01f-ba7e-4521-a423-e28dc449ee27" name="Default Changelist" comment="moved transfer course to api file">
+      <change afterPath="$PROJECT_DIR$/src/HomePage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NavigationBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuArea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CurriculumAlgorithmAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CurriculumAlgorithmAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +110,7 @@
       <workItem from="1563937349677" duration="2193000" />
       <workItem from="1564022111091" duration="9905000" />
       <workItem from="1564140063743" duration="4138000" />
+      <workItem from="1565130075089" duration="7861000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1561588024544</created>
@@ -203,5 +196,16 @@
     <MESSAGE value="style changes in course and semesters. Added Menu area" />
     <MESSAGE value="added Working Menu Area with remaining courses in curriculum" />
     <option name="LAST_COMMIT_MESSAGE" value="added Working Menu Area with remaining courses in curriculum" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/CurriculumAlgorithmAPI.js</url>
+          <line>61</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

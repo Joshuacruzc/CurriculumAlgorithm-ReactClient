@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
+import HomePage from "./HomePage";
+import {getUserInfo} from "./CurriculumAlgorithmAPI";
 
 
 class App extends React.Component{
@@ -14,9 +16,12 @@ class App extends React.Component{
     }
 
     getUser(token){
-        const user = {accessToken: token};
-        this.setState({user:user})
+        getUserInfo(token).then((data) => {
+            data["accessToken"] = token;
+            this.setState({user: data})
+        });
     }
+
     render() {
         if (this.state.user){
             return (<MainPage user={this.state.user}/>);
